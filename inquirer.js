@@ -54,7 +54,7 @@ export const pausa = async () => {
     {
       type: 'input',
       name: 'enter',
-      message: `Presione ${'ENTER'.green} para continuar`
+      message: `\n\nPresione ${'ENTER'.green} para continuar\n\n`
     }
   ];
   await inquirer.prompt(pregunta);

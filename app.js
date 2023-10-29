@@ -1,4 +1,6 @@
 import inquirerMenu from './inquirer.js'
+import Tarea from './tarea.js'
+import Tareas from './tareas.js'
 import { pausa } from './inquirer.js'
 
 const main = async () => {
@@ -6,6 +8,7 @@ const main = async () => {
   do {
     opt = await inquirerMenu()
     console.log({ opt })
+
     await pausa()
   } while (opt !== '0')
 
