@@ -25,6 +25,15 @@ export default class Tareas {
     const tarea = new Tarea(desc)
     this._listado[tarea.id] = tarea
   }
-}
 
-//se supone que al final _listado y listado son lo mismo, pero uno es un objeto y el otro es un arreglo
+  listadoCompleto() {
+    this.listadoArr.forEach((tarea, i) => {
+      const indice = `${i + 1}`.green
+      const { desc, completadoEn } = tarea
+      const estado = (completadoEn) ? 'Completada'.green : 'Pendiente'.red
+      console.log(`${indice} ${desc} :: ${estado}`);
+    })
+
+  }
+
+}
