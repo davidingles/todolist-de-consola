@@ -23,7 +23,13 @@ const main = async () => {
         break;
       case '2':
         console.log(tareas.listadoCompleto());
+        break;
+      case '3': tareas.listadoPendientes(true)
+        break;
+      case '4': tareas.listadoPendientes(false)
+        break;
     }
+
 
     await pausa()
   } while (opt !== '0')

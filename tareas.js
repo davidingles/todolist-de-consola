@@ -5,7 +5,6 @@ export default class Tareas {
     this._listado = {}
   }
 
-
   //el objetido de este getter es que cuando se llame a listadoArr, se devuelva un arreglo con todas las tareas en vez de un objeto
   get listadoArr() {
     const listado = []
@@ -33,7 +32,24 @@ export default class Tareas {
       const estado = (completadoEn) ? 'Completada'.green : 'Pendiente'.red
       console.log(`${indice} ${desc} :: ${estado}`);
     })
-
   }
 
+  listadoPendientes(completadas) {
+    let contador = 0
+    this.listadoArr.forEach(tarea => {
+      const { desc, completadoEn } = tarea
+      if (completadas) {
+        if (completadoEn) {
+          contador += 1
+          console.log(`${(contador + '.').green} ${desc} :: ${completadoEn.green}`);
+        }
+      }
+      if (!completadas) {
+        if (!completadoEn) {
+          contador += 1
+          console.log(`${(contador + '.').green} ${desc} :: ${'Pendiente'.red}`);
+        }
+      }
+    })
+  }
 }
