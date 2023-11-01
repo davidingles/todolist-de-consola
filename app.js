@@ -3,10 +3,15 @@ import { leerInput } from './inquirer.js'
 import Tarea from './tarea.js'
 import Tareas from './tareas.js'
 import { pausa } from './inquirer.js'
+import guardarData, { leerData } from './guardarData.js'
 
 const main = async () => {
   let opt = ''
   const tareas = new Tareas()
+  const tareasData = leerData()
+  if (tareasData) {
+    tareas.cargarTareasFromArray(tareasData)
+  }
 
   do {
     opt = await inquirerMenu()
@@ -17,11 +22,13 @@ const main = async () => {
         tareas.crearTarea(desc)
         break;
       case '2':
-        console.log(tareas._listado);
+        console.log(tareas.listadoArr);
     }
 
     await pausa()
   } while (opt !== '0')
+
+  guardarData(tareas.listadoArr)
 
 }
 main()
